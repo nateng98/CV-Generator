@@ -1,0 +1,30 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* Divide page into 2 */
+.main {
+  display: flex;
+}
+.left-div, .right-div {
+  flex: 1;
+  border: 1px solid red;
+  padding: 10px;
+}
+.left-div {
+  background-color: #f0f0f0;
+}
+.right-div {
+  background-color: #e0e0e0;
+}
+/* End debug */
+
+/* User input side (Left) */
+#about-cs{
+  padding: 50px 0;
+}
+
+.cv-form-row-title{
+  background-color: lightskyblue;
+  font-weight: 500;
+}
