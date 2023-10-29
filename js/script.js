@@ -12,7 +12,7 @@ $(function () {   // make sure that the page is fully loaded before executing an
     show: function () {        // when this is called ([+] button), the input element will drop down
       $(this).slideDown();// with slidedown animation
     },
-    hide: function (deleteElement) {  // when this is called ([-] button), the input element will disappear
+    hide: function (deleteElement) {  // when this is called ([x] button), the input element will disappear
       $(this).slideUp(deleteElement); // with slideup animation
       setTimeout(() => {  // there will be delay of 500ms and call function generateCV()
         generateCV();
