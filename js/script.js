@@ -1,7 +1,9 @@
 // jquery from repeater: use for repeatedly delete or add more input from users
 // For those who do not understand this, I provide some explaination within lines of code
 
-$(document).ready(function () {   // make sure that the page is ready (fully loaded) before executing any scripts
+// depends on which version of jquery you are using, syntax can be slightly different
+// $(document).ready(function() {   <-------for older version
+$(function () {   // make sure that the page is fully loaded before executing any scripts
   $('.repeater').repeater({   // select all class repeater and apply repeater fuction to them
     initEmpty: false,
     defaultValues: {        // default input is empty string
