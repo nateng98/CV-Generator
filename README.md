@@ -3,4 +3,5 @@ This web effortlessly generates professional resumes that showcase your achievem
 
 ### Current state:
 <li><strong>Download as PDF:</strong> Continue working on the download functionality</li>
+<li><strong>Date input:</strong> Date picker doesn't work on FireFox or Safari</li>
 <li><strong>Dates Display:</strong> The date display needs improvement</li>
