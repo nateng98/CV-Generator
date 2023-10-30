@@ -262,7 +262,7 @@ input {
 .preview-cnt {
   border-radius: 5px;
   display: grid;
-  grid-template-columns: 32% auto;
+  grid-template-columns: 40% auto;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   overflow: hidden;
 }
@@ -310,6 +310,10 @@ input {
   background-color: rgba(255, 255, 255, 0.5);
   left: 50%;
   transform: translateX(-50%);
+}
+
+.preview-item-val {
+  font-size: 13px;
 }
 
 .preview-blk {

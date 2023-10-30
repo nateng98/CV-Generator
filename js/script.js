@@ -131,7 +131,7 @@ const getUserInputs = () => {
   firstnameElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.TEXT, 'First Name'));
   middlenameElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.TEXT_EMP, 'Middle Name'));
   lastnameElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.TEXT, 'Last Name'));
-  phonenoElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.PHONENO, 'Phone Number'));
+  phonenoElem.addEventListener('blur', (e) => validateFormData(e.target, validType.PHONENO, 'Phone Number'));
   emailElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.EMAIL, 'Email'));
   addressElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'Address'));
   designationElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.TEXT, 'Designation'));
@@ -233,16 +233,51 @@ const showListData = (listData, listContainer) => {
   })
 }
 
+const showBulletPointListData = (listData, listContainer) => {
+  listContainer.innerHTML = "";
+  listData.forEach(listItem => {
+      let itemElem = document.createElement('div');
+      itemElem.classList.add('preview-item');
+      
+      for(const key in listItem){
+          let subItemElem = document.createElement('span');
+          subItemElem.classList.add('preview-item-val');
+          subItemElem.innerHTML = "⚬ " + `${listItem[key]}`;
+          itemElem.appendChild(subItemElem);
+      }
+
+      listContainer.appendChild(itemElem);
+  })
+}
+
+function getPhoneIcon () {
+  return '<i class="fa-solid fa-phone"></i> ';
+}
+const displayPhone = (userData) => {
+  phonenoDsp.innerHTML = getPhoneIcon() + userData.phoneno;
+}
+
+function getEmailIcon () {
+  return '<i class="fa-solid fa-envelope"></i> ';
+}
+const displayEmail = (userData) => {
+  emailDsp.innerHTML = getEmailIcon() + userData.email;
+}
+
+function getAddressIcon () {
+  return '<i class="fa-solid fa-house"></i> ';
+}
+const displayAddress = (userData) => {
+  addressDsp.innerHTML = getAddressIcon() + userData.address;
+}
+
 const displayCV = (userData) => {
   nameDsp.innerHTML = userData.firstname + " " + userData.middlename + " " + userData.lastname;
-  phonenoDsp.innerHTML = userData.phoneno;
-  emailDsp.innerHTML = userData.email;
-  addressDsp.innerHTML = userData.address;
   designationDsp.innerHTML = userData.designation;
   summaryDsp.innerHTML = userData.summary;
   showListData(userData.projects, projectsDsp);
   showListData(userData.achievements, achievementsDsp);
-  showListData(userData.skills, skillsDsp);
+  showBulletPointListData(userData.skills, skillsDsp);
   showListData(userData.educations, educationsDsp);
   showListData(userData.experiences, experiencesDsp);
 }
@@ -251,6 +286,24 @@ const displayCV = (userData) => {
 const generateCV = () => {
   let userData = getUserInputs();
   displayCV(userData);
+}
+const generatePhone = () => {
+  let userData = getUserInputs();
+  displayPhone(userData);
+}
+const generateEmail = () => {
+  let userData = getUserInputs();
+  displayEmail(userData);
+}
+const generateAddress = () => {
+  let userData = getUserInputs();
+  displayAddress(userData);
+}
+// Delete icon if input is empty
+const deleteIcon = () => {
+  if(phonenoDsp.innerHTML === getPhoneIcon()) phonenoDsp.innerHTML = "";
+  else if(emailDsp.innerHTML === getEmailIcon()) emailDsp.innerHTML = "";
+  else if(addressDsp.innerHTML === getAddressIcon()) addressDsp.innerHTML = "";
 }
 
 function previewImage(){

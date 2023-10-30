@@ -32,7 +32,7 @@
               <!-- ABOUT ME ------------------------------------------------------------------------------>
               <div class="cv-form-blk">
                 <div class="cv-form-row-title">
-                  <h3>About Me</h3>
+                  <h3>Basic Info</h3>
                 </div>
                 <div class="cv-form-row cv-form-row-about">
                   <div class="cols-3">
@@ -76,7 +76,9 @@
                     <!-- ADDRESS -->
                     <div class="form-elem">
                       <label for="" class="form-label">Address</label>
-                      <input name="address" type="text" class="form-control address" id="" onkeyup="generateCV()"
+                      <input name="address" type="text" class="form-control address" id="" 
+                        onkeyup="generateAddress()"
+                        onblur="deleteIcon()"
                         placeholder="e.g.123 University Crescent">
                       <span class="form-text"></span>
                     </div>
@@ -86,14 +88,18 @@
                   <div class="cols-3">
                     <div class="form-elem">
                       <label for="" class="form-label">Email</label>
-                      <input name="email" type="text" class="form-control email" id="" onkeyup="generateCV()"
+                      <input name="email" type="text" class="form-control email" id="" 
+                        onkeyup="generateEmail()"
+                        onblur="deleteIcon()"
                         placeholder="e.g. myEmail@gmail.com">
                       <span class="form-text"></span>
                     </div>
                     <!-- PHONE -->
                     <div class="form-elem">
                       <label for="" class="form-label">Phone</label>
-                      <input name="phoneno" type="text" class="form-control phoneno" id="" onkeyup="generateCV()"
+                      <input name="phoneno" type="text" class="form-control phoneno" id="" 
+                        onkeyup="generatePhone()"
+                        onblur="deleteIcon()"
                         placeholder="e.g.204-588-2047">
                       <span class="form-text"></span>
                     </div>
@@ -374,7 +380,7 @@
 
               <div class="preview-blk">
                 <div class="preview-blk-title">
-                  <h3>about</h3>
+                  <h3>info</h3>
                 </div>
                 <div class="preview-blk-list">
                   <div class="preview-item">
@@ -460,6 +466,8 @@
   <script src="js/node_modules/jquery.repeater/jquery.repeater.js"></script>
   <!-- javascript -->
   <script src="js/script.js"></script>
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/dede20123b.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
