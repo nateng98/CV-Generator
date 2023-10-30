@@ -86,6 +86,16 @@ body {
   font-family: var(--font-poppins);
 }
 
+/* scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--grey); 
+}
+
 /* Divide page into 2 */
 .main {
   display: flex;
@@ -109,6 +119,7 @@ body {
   height: 100vh;
   overflow-y: scroll;
   background-color: #f0f0f0;
+  padding-bottom: 50px;
 }
 
 .right-div {
@@ -118,7 +129,6 @@ body {
 
 button {
   border: none;
-  background-color: transparent;
   outline: 0;
   cursor: pointer;
   font-family: inherit;
@@ -215,7 +225,7 @@ input {
 }
 
 .form-text {
-  color: #ca0b00;
+  color: #b80900;
   font-size: 12px;
   position: absolute;
   letter-spacing: 0.5px;
@@ -256,7 +266,7 @@ input {
   transition: 0.2s;
 }
 .repeater-remove-btn:hover {
-  color: #ca0b00;
+  color: #b80900;
 }
 
 /* preview section */
@@ -369,8 +379,6 @@ input {
 .experiences-items.preview-blk-list .preview-item span:nth-child(4),
 .experiences-items.preview-blk-list .preview-item span:nth-child(5) {
   margin-right: 1rem;
-  background-color: var(--green);
-  color: var(--white);
   padding: 0 1rem;
   border-radius: 0.6rem;
 }
