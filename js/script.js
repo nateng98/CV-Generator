@@ -141,7 +141,6 @@ const getUserInputs = () => {
   expLocationElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, "Location")));
   // expStartDateElem.forEach(item => item.addEventListener('blur', (e) => validateFormData(e.target, validType.ANY, 'End Date')));
 
-  expStartDateElem.forEach(item => item.addEventListener('blur', (e) => convertDateToMonthYear(e)));
 
   expEndDateElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'End Date')));
   expDescriptionElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'Description')));
@@ -217,19 +216,22 @@ function removeErrMsg(formElem) {
 }
 
 // change date display
-function convertDateToMonthYear(inputDate) {
-  const date = new Date(inputDate);
-  const today = new Date();
+// function convertDateToMonthYear(node) {
+//   const dataText = node.textContent;
+//   console.log(node.textContent);
+//   const date = new Date(dataText);
+//   const today = new Date();
 
-  if (date.getFullYear() >= today.getFullYear() && date.getMonth() >= today.getMonth()) {
-    return "Present";
-  }
+//   if (date.getFullYear() >= today.getFullYear() && date.getMonth() >= today.getMonth()) {
+//     return "Present";
+//   }
 
-  date.setDate(date.getDate() + 1); // Add 1 day
-  const month = date.toLocaleString('default', { month: 'long' });
-  const year = date.getFullYear();
-  return `${month} ${year}`;
-}
+//   date.setDate(date.getDate() + 1); // Add 1 day
+//   const month = date.toLocaleString('default', { month: 'long' });
+//   const year = date.getFullYear();
+//   node.textContent = `${month} ${year}`;
+//   return node;
+// }
 
 // show the list data
 const showListData = (listData, listContainer) => {
@@ -286,6 +288,9 @@ function getAddressIcon() {
 const displayAddress = (userData) => {
   addressDsp.innerHTML = getAddressIcon() + userData.address;
 }
+const displaySKills = (userData) => {
+  showBulletPointListData(userData.skills, skillsDsp); 
+}
 
 const displayCV = (userData) => {
   nameDsp.innerHTML = userData.firstname + " " + userData.middlename + " " + userData.lastname;
@@ -293,7 +298,6 @@ const displayCV = (userData) => {
   summaryDsp.innerHTML = userData.summary;
   showListData(userData.projects, projectsDsp);
   showListData(userData.achievements, achievementsDsp);
-  showBulletPointListData(userData.skills, skillsDsp);
   showListData(userData.educations, educationsDsp);
   showListData(userData.experiences, experiencesDsp);
 }
@@ -315,6 +319,9 @@ const generateAddress = () => {
   let userData = getUserInputs();
   displayAddress(userData);
 }
+// const generateSkills = () {
+// need to handle thing
+// }
 // Delete icon if input is empty
 const deleteIcon = () => {
   if (phonenoDsp.innerHTML === getPhoneIcon()) phonenoDsp.innerHTML = "";
