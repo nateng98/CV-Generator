@@ -312,9 +312,9 @@ input {
   transform: translateX(-50%);
 }
 
-.preview-item-val {
+/* .preview-item-val {
   font-size: 13px;
-}
+} */
 
 .preview-blk {
   padding: 1rem 0;
@@ -333,7 +333,7 @@ input {
 }
 
 .preview-blk-list .preview-item {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-bottom: 0.2rem;
   opacity: 0.95;
 }
@@ -374,6 +374,9 @@ input {
   margin-right: 1rem;
   padding: 0 1rem;
   border-radius: 0.6rem;
+  /* make date float on the left side of the CV */
+  position: relative;
+  float: right;
 }
 
 .educations-items.preview-blk-list .preview-item span:nth-child(6),

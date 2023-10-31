@@ -82,16 +82,14 @@ const fetchValues = (attrs, ...nodeLists) => {
   let tempDataArr = [];
 
   // first loop deals with the no of repeaters value
-  for(let i = 0; i < elemsDataCount; i++){
-      let dataObj = {}; // creating an empty object to fill the data
-      // second loop fetches the data for each repeaters value or attributes 
-      for(let j = 0; j < elemsAttrsCount; j++){
-          // setting the key name for the object and fill it with data
-          dataObj[`${attrs[j]}`] = nodeLists[j][i].value;
-          console.log(nodeLists[j]);
-          console.log(nodeLists[j][i].value);
-      }
-      tempDataArr.push(dataObj);
+  for (let i = 0; i < elemsDataCount; i++) {
+    let dataObj = {}; // creating an empty object to fill the data
+    // second loop fetches the data for each repeaters value or attributes 
+    for (let j = 0; j < elemsAttrsCount; j++) {
+      // setting the key name for the object and fill it with data
+      dataObj[`${attrs[j]}`] = nodeLists[j][i].value;
+    }
+    tempDataArr.push(dataObj);
   }
 
   return tempDataArr;
@@ -101,27 +99,27 @@ const getUserInputs = () => {
 
   // achivements 
   let achievementsTitleElem = document.querySelectorAll('.achieve_title'),
-  achievementsDescriptionElem = document.querySelectorAll('.achieve_description');
+    achievementsDescriptionElem = document.querySelectorAll('.achieve_description');
 
   // experiences
   let expTitleElem = document.querySelectorAll('.exp_title'),
-  expOrganizationElem = document.querySelectorAll('.exp_organization'),
-  expLocationElem = document.querySelectorAll('.exp_location'),
-  expStartDateElem = document.querySelectorAll('.exp_start_date'),
-  expEndDateElem = document.querySelectorAll('.exp_end_date'),
-  expDescriptionElem = document.querySelectorAll('.exp_description');
+    expOrganizationElem = document.querySelectorAll('.exp_organization'),
+    expLocationElem = document.querySelectorAll('.exp_location'),
+    expStartDateElem = document.querySelectorAll('.exp_start_date'),
+    expEndDateElem = document.querySelectorAll('.exp_end_date'),
+    expDescriptionElem = document.querySelectorAll('.exp_description');
 
   // education
   let eduSchoolElem = document.querySelectorAll('.edu_school'),
-  eduDegreeElem = document.querySelectorAll('.edu_degree'),
-  eduCityElem = document.querySelectorAll('.edu_city'),
-  eduStartDateElem = document.querySelectorAll('.edu_start_date'),
-  eduGraduationDateElem = document.querySelectorAll('.edu_graduation_date'),
-  eduDescriptionElem = document.querySelectorAll('.edu_description');
+    eduDegreeElem = document.querySelectorAll('.edu_degree'),
+    eduCityElem = document.querySelectorAll('.edu_city'),
+    eduStartDateElem = document.querySelectorAll('.edu_start_date'),
+    eduGraduationDateElem = document.querySelectorAll('.edu_graduation_date'),
+    eduDescriptionElem = document.querySelectorAll('.edu_description');
 
   let projTitleElem = document.querySelectorAll('.proj_title'),
-  projLinkElem = document.querySelectorAll('.proj_link'),
-  projDescriptionElem = document.querySelectorAll('.proj_description');
+    projLinkElem = document.querySelectorAll('.proj_link'),
+    projDescriptionElem = document.querySelectorAll('.proj_description');
 
   let skillElem = document.querySelectorAll('.skill');
 
@@ -131,7 +129,7 @@ const getUserInputs = () => {
   firstnameElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.TEXT, 'First Name'));
   middlenameElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.TEXT_EMP, 'Middle Name'));
   lastnameElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.TEXT, 'Last Name'));
-  phonenoElem.addEventListener('blur', (e) => validateFormData(e.target, validType.PHONENO, 'Phone Number'));
+  phonenoElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.PHONENO, 'Phone Number'));
   emailElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.EMAIL, 'Email'));
   addressElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'Address'));
   designationElem.addEventListener('keyup', (e) => validateFormData(e.target, validType.TEXT, 'Designation'));
@@ -157,61 +155,62 @@ const getUserInputs = () => {
 
   // return each of the character that users type in
   return {
-      firstname: firstnameElem.value,
-      middlename: middlenameElem.value,
-      lastname: lastnameElem.value,
-      designation: designationElem.value,
-      address: addressElem.value,
-      email: emailElem.value,
-      phoneno: phonenoElem.value,
-      summary: summaryElem.value,
-      achievements: fetchValues(['achieve_title', 'achieve_description'], achievementsTitleElem, achievementsDescriptionElem),
-      experiences: fetchValues(['exp_title', 'exp_organization', 'exp_location', 'exp_start_date', 'exp_end_date', 'exp_description'], expTitleElem, expOrganizationElem, expLocationElem, expStartDateElem, expEndDateElem, expDescriptionElem),
-      educations: fetchValues(['edu_school', 'edu_degree', 'edu_city', 'edu_start_date', 'edu_graduation_date', 'edu_description'], eduSchoolElem, eduDegreeElem, eduCityElem, eduStartDateElem, eduGraduationDateElem, eduDescriptionElem),
-      projects: fetchValues(['proj_title', 'proj_link', 'proj_description'], projTitleElem, projLinkElem, projDescriptionElem),
-      skills: fetchValues(['skill'], skillElem)
+    firstname: firstnameElem.value,
+    middlename: middlenameElem.value,
+    lastname: lastnameElem.value,
+    designation: designationElem.value,
+    address: addressElem.value,
+    email: emailElem.value,
+    phoneno: phonenoElem.value,
+    summary: summaryElem.value,
+    achievements: fetchValues(['achieve_title', 'achieve_description'], achievementsTitleElem, achievementsDescriptionElem),
+    experiences: fetchValues(['exp_title', 'exp_organization', 'exp_location', 'exp_start_date', 'exp_end_date', 'exp_description'], expTitleElem, expOrganizationElem, expLocationElem, expStartDateElem, expEndDateElem, expDescriptionElem),
+    educations: fetchValues(['edu_school', 'edu_degree', 'edu_city', 'edu_start_date', 'edu_graduation_date', 'edu_description'], eduSchoolElem, eduDegreeElem, eduCityElem, eduStartDateElem, eduGraduationDateElem, eduDescriptionElem),
+    projects: fetchValues(['proj_title', 'proj_link', 'proj_description'], projTitleElem, projLinkElem, projDescriptionElem),
+    skills: fetchValues(['skill'], skillElem)
   }
 };
+// exact dates from function above --> change to month-year format
 
-function validateFormData(elem, elemType, elemName){
+function validateFormData(elem, elemType, elemName) {
   // checking for text string and non empty string
-  if(elemType == validType.TEXT){
-      if(!strRegex.test(elem.value) || elem.value.trim().length == 0) addErrMsg(elem, elemName);
-      else removeErrMsg(elem);
+  if (elemType == validType.TEXT) {
+    if (!strRegex.test(elem.value) || elem.value.trim().length == 0) addErrMsg(elem, elemName);
+    else removeErrMsg(elem);
   }
 
   // checking for only text string
-  if(elemType == validType.TEXT_EMP){
-      if(!strRegex.test(elem.value)) addErrMsg(elem, elemName);
-      else removeErrMsg(elem);
+  if (elemType == validType.TEXT_EMP) {
+    if (!strRegex.test(elem.value)) addErrMsg(elem, elemName);
+    else removeErrMsg(elem);
   }
 
   // checking for email
-  if(elemType == validType.EMAIL){
-      if(!emailRegex.test(elem.value) || elem.value.trim().length == 0) addErrMsg(elem, elemName);
-      else removeErrMsg(elem);
+  if (elemType == validType.EMAIL) {
+    if (!emailRegex.test(elem.value) || elem.value.trim().length == 0) addErrMsg(elem, elemName);
+    else removeErrMsg(elem);
   }
 
   // checking for phone number
-  if(elemType == validType.PHONENO){
-      if(!phoneRegex.test(elem.value) || elem.value.trim().length == 0) addErrMsg(elem, elemName);
-      else removeErrMsg(elem);
+  if (elemType == validType.PHONENO) {
+    if (!phoneRegex.test(elem.value) || elem.value.trim().length == 0) addErrMsg(elem, elemName);
+    else removeErrMsg(elem);
   }
 
   // checking for only empty
-  if(elemType == validType.ANY){
-      if(elem.value.trim().length == 0) addErrMsg(elem, elemName);
-      else removeErrMsg(elem);
+  if (elemType == validType.ANY) {
+    if (elem.value.trim().length == 0) addErrMsg(elem, elemName);
+    else removeErrMsg(elem);
   }
 }
 
 // adding the invalid text
-function addErrMsg(formElem, formElemName){
-  formElem.nextElementSibling.innerHTML = `${formElemName} is invalid`;
+function addErrMsg(formElem, formElemName) {
+  formElem.nextElementSibling.innerHTML = `${formElemName} is invalid or empty`;
 }
 
 // removing the invalid text 
-function removeErrMsg(formElem){
+function removeErrMsg(formElem) {
   formElem.nextElementSibling.innerHTML = "";
 }
 
@@ -219,52 +218,52 @@ function removeErrMsg(formElem){
 const showListData = (listData, listContainer) => {
   listContainer.innerHTML = "";
   listData.forEach(listItem => {
-      let itemElem = document.createElement('div');
-      itemElem.classList.add('preview-item');
-      
-      for(const key in listItem){
-          let subItemElem = document.createElement('span');
-          subItemElem.classList.add('preview-item-val');
-          subItemElem.innerHTML = `${listItem[key]}`;
-          itemElem.appendChild(subItemElem);
-      }
+    let itemElem = document.createElement('div');
+    itemElem.classList.add('preview-item');
 
-      listContainer.appendChild(itemElem);
+    for (const key in listItem) {
+      let subItemElem = document.createElement('span');
+      subItemElem.classList.add('preview-item-val');
+      subItemElem.innerHTML = `${listItem[key]}`;
+      itemElem.appendChild(subItemElem);
+    }
+
+    listContainer.appendChild(itemElem);
   })
 }
 
 const showBulletPointListData = (listData, listContainer) => {
   listContainer.innerHTML = "";
   listData.forEach(listItem => {
-      let itemElem = document.createElement('div');
-      itemElem.classList.add('preview-item');
-      
-      for(const key in listItem){
-          let subItemElem = document.createElement('span');
-          subItemElem.classList.add('preview-item-val');
-          subItemElem.innerHTML = "⚬ " + `${listItem[key]}`;
-          itemElem.appendChild(subItemElem);
-      }
+    let itemElem = document.createElement('div');
+    itemElem.classList.add('preview-item');
 
-      listContainer.appendChild(itemElem);
+    for (const key in listItem) {
+      let subItemElem = document.createElement('span');
+      subItemElem.classList.add('preview-item-val');
+      subItemElem.innerHTML = "⚬ " + `${listItem[key]}`;
+      itemElem.appendChild(subItemElem);
+    }
+
+    listContainer.appendChild(itemElem);
   })
 }
 
-function getPhoneIcon () {
+function getPhoneIcon() {
   return '<i class="fa-solid fa-phone"></i> ';
 }
 const displayPhone = (userData) => {
   phonenoDsp.innerHTML = getPhoneIcon() + userData.phoneno;
 }
 
-function getEmailIcon () {
+function getEmailIcon() {
   return '<i class="fa-solid fa-envelope"></i> ';
 }
 const displayEmail = (userData) => {
   emailDsp.innerHTML = getEmailIcon() + userData.email;
 }
 
-function getAddressIcon () {
+function getAddressIcon() {
   return '<i class="fa-solid fa-house"></i> ';
 }
 const displayAddress = (userData) => {
@@ -301,20 +300,20 @@ const generateAddress = () => {
 }
 // Delete icon if input is empty
 const deleteIcon = () => {
-  if(phonenoDsp.innerHTML === getPhoneIcon()) phonenoDsp.innerHTML = "";
-  else if(emailDsp.innerHTML === getEmailIcon()) emailDsp.innerHTML = "";
-  else if(addressDsp.innerHTML === getAddressIcon()) addressDsp.innerHTML = "";
+  if (phonenoDsp.innerHTML === getPhoneIcon()) phonenoDsp.innerHTML = "";
+  else if (emailDsp.innerHTML === getEmailIcon()) emailDsp.innerHTML = "";
+  else if (addressDsp.innerHTML === getAddressIcon()) addressDsp.innerHTML = "";
 }
 
-function previewImage(){
+function previewImage() {
   let oFReader = new FileReader();
   oFReader.readAsDataURL(imageElem.files[0]);
-  oFReader.onload = function(ofEvent){
-      imageDsp.src = ofEvent.target.result;
+  oFReader.onload = function (ofEvent) {
+    imageDsp.src = ofEvent.target.result;
   }
 }
 
 // print CV
-function printCV(){
+function printCV() {
   // Do something
 }
