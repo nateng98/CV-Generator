@@ -139,7 +139,10 @@ const getUserInputs = () => {
   expTitleElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'Title')));
   expOrganizationElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'Organization')));
   expLocationElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, "Location")));
-  expStartDateElem.forEach(item => item.addEventListener('blur', (e) => validateFormData(e.target, validType.ANY, 'End Date')));
+  // expStartDateElem.forEach(item => item.addEventListener('blur', (e) => validateFormData(e.target, validType.ANY, 'End Date')));
+
+  expStartDateElem.forEach(item => item.addEventListener('blur', (e) => convertDateToMonthYear(e)));
+
   expEndDateElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'End Date')));
   expDescriptionElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'Description')));
   eduSchoolElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'School')));
@@ -170,7 +173,6 @@ const getUserInputs = () => {
     skills: fetchValues(['skill'], skillElem)
   }
 };
-// exact dates from function above --> change to month-year format
 
 function validateFormData(elem, elemType, elemName) {
   // checking for text string and non empty string
@@ -212,6 +214,21 @@ function addErrMsg(formElem, formElemName) {
 // removing the invalid text 
 function removeErrMsg(formElem) {
   formElem.nextElementSibling.innerHTML = "";
+}
+
+// change date display
+function convertDateToMonthYear(inputDate) {
+  const date = new Date(inputDate);
+  const today = new Date();
+
+  if (date.getFullYear() >= today.getFullYear() && date.getMonth() >= today.getMonth()) {
+    return "Present";
+  }
+
+  date.setDate(date.getDate() + 1); // Add 1 day
+  const month = date.toLocaleString('default', { month: 'long' });
+  const year = date.getFullYear();
+  return `${month} ${year}`;
 }
 
 // show the list data

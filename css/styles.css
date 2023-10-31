@@ -379,6 +379,16 @@ input {
   float: right;
 }
 
+.educations-items.preview-blk-list .preview-item span:nth-child(4),
+.experiences-items.preview-blk-list .preview-item span:nth-child(4){
+  order: 5;
+}
+
+.educations-items.preview-blk-list .preview-item span:nth-child(5),
+.experiences-items.preview-blk-list .preview-item span:nth-child(5){
+  order: 4;
+}
+
 .educations-items.preview-blk-list .preview-item span:nth-child(6),
 .experiences-items.preview-blk-list .preview-item span:nth-child(6) {
   font-size: 13.5px;
