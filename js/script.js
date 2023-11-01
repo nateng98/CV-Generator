@@ -139,9 +139,7 @@ const getUserInputs = () => {
   expTitleElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'Title')));
   expOrganizationElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'Organization')));
   expLocationElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, "Location")));
-  // expStartDateElem.forEach(item => item.addEventListener('blur', (e) => validateFormData(e.target, validType.ANY, 'End Date')));
-
-
+  expStartDateElem.forEach(item => item.addEventListener('blur', (e) => validateFormData(e.target, validType.ANY, 'End Date')));
   expEndDateElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'End Date')));
   expDescriptionElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'Description')));
   eduSchoolElem.forEach(item => item.addEventListener('keyup', (e) => validateFormData(e.target, validType.ANY, 'School')));
@@ -215,24 +213,6 @@ function removeErrMsg(formElem) {
   formElem.nextElementSibling.innerHTML = "";
 }
 
-// change date display
-// function convertDateToMonthYear(node) {
-//   const dataText = node.textContent;
-//   console.log(node.textContent);
-//   const date = new Date(dataText);
-//   const today = new Date();
-
-//   if (date.getFullYear() >= today.getFullYear() && date.getMonth() >= today.getMonth()) {
-//     return "Present";
-//   }
-
-//   date.setDate(date.getDate() + 1); // Add 1 day
-//   const month = date.toLocaleString('default', { month: 'long' });
-//   const year = date.getFullYear();
-//   node.textContent = `${month} ${year}`;
-//   return node;
-// }
-
 // show the list data
 const showListData = (listData, listContainer) => {
   listContainer.innerHTML = "";
@@ -244,23 +224,6 @@ const showListData = (listData, listContainer) => {
       let subItemElem = document.createElement('span');
       subItemElem.classList.add('preview-item-val');
       subItemElem.innerHTML = `${listItem[key]}`;
-      itemElem.appendChild(subItemElem);
-    }
-
-    listContainer.appendChild(itemElem);
-  })
-}
-
-const showBulletPointListData = (listData, listContainer) => {
-  listContainer.innerHTML = "";
-  listData.forEach(listItem => {
-    let itemElem = document.createElement('div');
-    itemElem.classList.add('preview-item');
-
-    for (const key in listItem) {
-      let subItemElem = document.createElement('span');
-      subItemElem.classList.add('preview-item-val');
-      subItemElem.innerHTML = "⚬ " + `${listItem[key]}`;
       itemElem.appendChild(subItemElem);
     }
 
@@ -288,9 +251,39 @@ function getAddressIcon() {
 const displayAddress = (userData) => {
   addressDsp.innerHTML = getAddressIcon() + userData.address;
 }
-const displaySKills = (userData) => {
-  showBulletPointListData(userData.skills, skillsDsp); 
+
+// change date format
+function convertDates(dataArray, dateKeys) {
+  // Split T so we can ignore
+  var today = new Date().setHours(0,0,0,0);
+  dataArray.forEach(function(obj) {
+    dateKeys.forEach(function(key) {
+      var selectedDate = new Date(obj[key]);
+
+      selectedDate.setDate(selectedDate.getDate() + 1); // Add 1 day
+      if (selectedDate >= today) {
+        obj[key] = 'Present';
+      } else {
+        var month = selectedDate.toLocaleString('en-US', { month: 'long' });
+        var year = selectedDate.getFullYear();
+        obj[key] = month + ' ' + year;
+      }
+
+    });
+  });
 }
+
+// Swap dates to use float right with worry about the order
+function swapDates(dataArray, key1, key2) {
+  dataArray.forEach(function(obj) {
+    var temp = obj[key1];
+    obj[key1] = obj[key2];
+    obj[key2] = temp;
+  });
+}
+
+let expDateKeysToConvert = ['exp_start_date', 'exp_end_date'];
+let eduDateKeysToConvert = ['edu_start_date', 'edu_graduation_date'];
 
 const displayCV = (userData) => {
   nameDsp.innerHTML = userData.firstname + " " + userData.middlename + " " + userData.lastname;
@@ -298,8 +291,7 @@ const displayCV = (userData) => {
   summaryDsp.innerHTML = userData.summary;
   showListData(userData.projects, projectsDsp);
   showListData(userData.achievements, achievementsDsp);
-  showListData(userData.educations, educationsDsp);
-  showListData(userData.experiences, experiencesDsp);
+  showListData(userData.skills, skillsDsp);
 }
 
 // generate CV
@@ -318,6 +310,18 @@ const generateEmail = () => {
 const generateAddress = () => {
   let userData = getUserInputs();
   displayAddress(userData);
+}
+const generateExperience = () => {
+  let userData = getUserInputs();
+  convertDates(userData.experiences, expDateKeysToConvert);
+  swapDates(userData.experiences, expDateKeysToConvert[0], expDateKeysToConvert[1]);
+  showListData(userData.experiences, experiencesDsp);
+}
+const generateEducation = () => {
+  let userData = getUserInputs();
+  convertDates(userData.educations, eduDateKeysToConvert);
+  swapDates(userData.educations, eduDateKeysToConvert[0]. eduDateKeysToConvert[1]);
+  showListData(userData.educations, educationsDsp);
 }
 // const generateSkills = () {
 // need to handle thing

@@ -273,6 +273,8 @@ input {
 
 .preview-cnt-r {
   padding: 3rem 3rem 3rem 4rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .preview-cnt-l .preview-blk:nth-child(1) {
@@ -311,10 +313,6 @@ input {
   left: 50%;
   transform: translateX(-50%);
 }
-
-/* .preview-item-val {
-  font-size: 13px;
-} */
 
 .preview-blk {
   padding: 1rem 0;
@@ -371,22 +369,15 @@ input {
 .educations-items.preview-blk-list .preview-item span:nth-child(5),
 .experiences-items.preview-blk-list .preview-item span:nth-child(4),
 .experiences-items.preview-blk-list .preview-item span:nth-child(5) {
-  margin-right: 1rem;
-  padding: 0 1rem;
-  border-radius: 0.6rem;
   /* make date float on the left side of the CV */
+  padding: 0 0.2rem;
   position: relative;
   float: right;
 }
 
-.educations-items.preview-blk-list .preview-item span:nth-child(4),
-.experiences-items.preview-blk-list .preview-item span:nth-child(4){
-  order: 5;
-}
-
-.educations-items.preview-blk-list .preview-item span:nth-child(5),
-.experiences-items.preview-blk-list .preview-item span:nth-child(5){
-  order: 4;
+.educations-items.preview-blk-list .preview-item span:nth-child(4)::before,
+.experiences-items.preview-blk-list .preview-item span:nth-child(4)::before{
+  content: "—";
 }
 
 .educations-items.preview-blk-list .preview-item span:nth-child(6),
