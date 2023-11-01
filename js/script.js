@@ -323,9 +323,7 @@ const generateEducation = () => {
   swapDates(userData.educations, eduDateKeysToConvert[0]. eduDateKeysToConvert[1]);
   showListData(userData.educations, educationsDsp);
 }
-// const generateSkills = () {
-// need to handle thing
-// }
+
 // Delete icon if input is empty
 const deleteIcon = () => {
   if (phonenoDsp.innerHTML === getPhoneIcon()) phonenoDsp.innerHTML = "";
