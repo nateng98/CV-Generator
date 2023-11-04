@@ -97,9 +97,15 @@ body {
   padding: 80px 10px 10px 10px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1480px) {
   .left-div, .right-div {
       flex: 100%;
+  }
+
+  .left-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -153,6 +159,32 @@ a {
 }
 
 /* resume page */
+.con_right{
+  min-height: 1100px;
+}
+
+@media only screen and (min-width: 768px) {
+  .con_right{
+    resize: none;
+    width: 850px;
+  }
+}
+/* phone */
+@media only screen and (max-width: 480px){
+  .con_right {
+    width: 480px;
+    min-height: 627px;
+  }
+}
+
+/* ipad */
+@media only screen and (max-width: 768px){
+  .con_right {
+    width: 768px;
+    min-height: 994px;
+  }
+}
+
 .cv-form-row-title {
   border-radius: 2px 20px 2px;
   background-color: var(--navy);
