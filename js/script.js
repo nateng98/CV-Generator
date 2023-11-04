@@ -320,7 +320,7 @@ const generateExperience = () => {
 const generateEducation = () => {
   let userData = getUserInputs();
   convertDates(userData.educations, eduDateKeysToConvert);
-  swapDates(userData.educations, eduDateKeysToConvert[0]. eduDateKeysToConvert[1]);
+  swapDates(userData.educations, eduDateKeysToConvert[0], eduDateKeysToConvert[1]);
   showListData(userData.educations, educationsDsp);
 }
 
