@@ -7,7 +7,6 @@
   <meta name="description" content="">
   <!-- CSS -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" />
-
   <title>CV Generator</title>
 </head>
 
@@ -362,8 +361,8 @@
     <!-- Preview -->
     <div class="right-div">
 
-      <section id="preview-sc" class="print_area">
-        <div class="container con_right">
+      <div id="preview-sc" class="print_area">
+        <div id="printme" class="container con_right">
           <div class="preview-cnt">
             <div class="preview-cnt-l bg-navy text-white">
               <div class="preview-blk">
@@ -444,12 +443,12 @@
             </div>
           </div>
         </div>
-      </section>
+      </div>
 
       <!-- PRINT CV -->
       <section class="print-btn-sc">
         <div class="container">
-          <button type="button" class="print-btn btn btn-primary" onclick="printCV()">Download option is still under developerment</button>
+          <button id="download-button">Download as PDF</button>
         </div>
       </section>
 
@@ -464,6 +463,8 @@
   <script src="js/node_modules/jquery/dist/jquery.js"></script>
   <!-- jquery repeater - run "npm install jquery.repeater --save" -->
   <script src="js/node_modules/jquery.repeater/jquery.repeater.js"></script>
+  <!-- Print CV -->
+  <script src="js/html2pdf.bundle.min.js"></script>
   <!-- javascript -->
   <script src="js/script.js"></script>
   <!-- Font Awesome -->

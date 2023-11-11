@@ -159,10 +159,6 @@ a {
 }
 
 /* resume page */
-.con_right{
-  min-height: 1100px;
-}
-
 @media only screen and (min-width: 768px) {
   .con_right{
     resize: none;
