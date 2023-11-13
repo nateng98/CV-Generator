@@ -5,3 +5,5 @@ This web effortlessly generates professional resumes that showcase your achievem
 - **Date**: changes won't apply unless you edit other inputs *(e.g: Description, City, etc.)*
 - **Download as PDF**: Works on computer but does not work on mobile
 
+### Acknowledgements 
+- [html2pdf.js](https://github.com/eKoopmans/html2pdf.js)
