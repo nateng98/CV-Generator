@@ -5,8 +5,7 @@ This web effortlessly generates professional resumes that showcase your achievem
 [CV Generator](https://nateng98.github.io/CV-Generator/)
 
 ## Current state:
-- **Date**: changes won't apply unless you edit other inputs *(e.g: Description, City, etc.)*
-- **Download as PDF**: Works on computer but does not work on mobile
+- **Download as PDF**: Does not work for smaller screen (< 1480px)
 
 ## Acknowledgements 
 - [html2pdf.js](https://github.com/eKoopmans/html2pdf.js)

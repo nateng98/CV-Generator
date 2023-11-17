@@ -490,8 +490,9 @@ function generatePDF() {
   var element = document.getElementById("printme");
   var opt = {
     margin: 0,
+    padding: 0,
     filename: "myCV.pdf",
-    image: { dpi: 192, letterRendering: true },
+    image: { dpi: 120, letterRendering: true },
     html2canvas: { scale: 2 },
     jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
   };
